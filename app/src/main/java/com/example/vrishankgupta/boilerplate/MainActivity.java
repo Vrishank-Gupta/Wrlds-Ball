@@ -9,15 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wrlds.sdk.Ball;
 
+import mehdi.sakout.fancybuttons.FancyButton;
+
 public class MainActivity extends AppCompatActivity {
 
     Ball a;
-
-
+    TextView tv;
+    FancyButton scan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
         ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{
-                        Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
                 },
                 1);
 
@@ -42,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
                     start();
                 } else {
-                    Toast.makeText(MainActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,
+                            "Permission denied, Please got to Settings to grant permissions.",
+                            Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
@@ -53,12 +61,16 @@ public class MainActivity extends AppCompatActivity {
     {
         a = new Ball(this);
         Button btn = findViewById(R.id.butn);
-
+        tv = findViewById(R.id.Hello);
+        scan = findViewById(R.id.fancy);
+        scan.setText("Scan");
+        scan.setRadius(55);
+        scan.setTextSize(20);
 
         a.setOnConnectionStateChangedListener(new Ball.OnConnectionStateChangedListener() {
             @Override
             public void onConnectionStateChanged(int i, String s) {
-                btn.setOnClickListener(new View.OnClickListener() {
+                scan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         a.scanForDevices();
@@ -68,14 +80,25 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+                if(a.getDeviceName() != null )
+                {
+                    tv.setText("Connected to " + a.getDeviceName() + " Ball");
+                }
             }
         });
 
         a.setOnBounceListener(new Ball.OnBounceListener() {
-            @Override
-            public void onBounce(int i, float v) {
-                Toast.makeText(a, "Bouncing", Toast.LENGTH_LONG).show();
-            }
-        });
+        @Override
+        public void onBounce(int i, float v) {
+            Toast.makeText(a, a.getBatteryLevel()+"", Toast.LENGTH_LONG).show();
+            Log.d("Type", "onBounce: " + new Ball.BounceType() + " ");
+        }
+
+    });
+
+
+        Ball.BounceType y = new Ball.BounceType();
+
+
     }
 }

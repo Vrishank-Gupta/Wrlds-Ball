@@ -28,13 +28,27 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         a.scanForDevices();
-
+                        Log.d("Conn", "onClick: "+a.getConnectionState());
                         Log.d("Devices", "onCreate: " + a.getDeviceList());
+
+
                     }
                 });
             }
         });
 
-        Toast.makeText(this, a.getDeviceList().toString(), Toast.LENGTH_SHORT).show();
+        a.setOnBounceListener(new Ball.OnBounceListener() {
+            @Override
+            public void onBounce(int i, float v) {
+                Toast.makeText(a, "Bouncing", Toast.LENGTH_LONG).show();
+            }
+        });
+
+//        a.setOnShakeListener(new Ball.OnShakeListener() {
+//            @Override
+//            public void onShake(float v) {
+//                Toast.makeText(a, "Shake", Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
 }

@@ -17,9 +17,8 @@ public class Splash extends AppCompatActivity {
                 .withTargetActivity(MainActivity.class)
                 .withSplashTimeOut(3000)
                 .withBackgroundResource(android.R.color.white)
-                .withFooterText("Copyright 2016")
+                .withHeaderText("BoilerPlate")
                 .withBackgroundResource(R.drawable.ballimage)
-                .withBeforeLogoText("BoilerPlate")
                 .create();
 
         setContentView(easySplashScreenView);

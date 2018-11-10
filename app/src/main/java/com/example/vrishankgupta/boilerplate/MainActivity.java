@@ -1,6 +1,7 @@
 package com.example.vrishankgupta.boilerplate;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,7 +9,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +18,7 @@ import mehdi.sakout.fancybuttons.FancyButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    Ball a;
+   static Ball a;
     TextView tv;
     FancyButton scan;
 
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
     void start()
     {
         a = new Ball(this);
-        Button btn = findViewById(R.id.butn);
         tv = findViewById(R.id.Hello);
         scan = findViewById(R.id.fancy);
         scan.setText("Scan");
@@ -84,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 if(a.getDeviceName() != null )
                 {
                     tv.setText("Connected to " + a.getDeviceName() + " Ball");
+                    startActivity(new Intent(MainActivity.this,ActionActivity.class));
+                    finish();
                 }
             }
         });

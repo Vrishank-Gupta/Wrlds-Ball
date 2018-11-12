@@ -33,10 +33,18 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_below="@id/img"
+        android:id="@+id/txtbelow"
         android:padding="10dp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         android:text="Wish to share the different physical notations in the free body diagram:-\n1. m:- Mass of the ball.\n2. g:- Acceleration due to gravity"/>
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtbelow"
+            android:id="@+id/ytPlayer"
+            android:layout_marginTop="40dp"/>
 
     </RelativeLayout>
 </ScrollView>

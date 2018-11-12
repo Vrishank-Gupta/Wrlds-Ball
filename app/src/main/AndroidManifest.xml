@@ -30,13 +30,15 @@
 
         <activity android:name=".MainActivity" />
         <activity android:name=".Splash">
+
+        </activity>
+        <activity android:name=".BeforeBounce" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BeforeBounce" />
         <activity android:name=".AfterBounce"></activity>
     </application>
 

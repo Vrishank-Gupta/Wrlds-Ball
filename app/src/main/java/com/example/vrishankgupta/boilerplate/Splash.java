@@ -17,7 +17,7 @@ public class Splash extends AppCompatActivity {
                 .withTargetActivity(MainActivity.class)
                 .withSplashTimeOut(3000)
                 .withBackgroundResource(android.R.color.white)
-                .withHeaderText("BoilerPlate")
+                .withBeforeLogoText("Play Physics")
                 .withBackgroundResource(R.drawable.ballimage)
                 .create();
 

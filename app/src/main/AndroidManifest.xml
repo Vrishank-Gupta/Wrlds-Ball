@@ -28,7 +28,7 @@
             android:name="com.wrlds.sdk.services.DfuService"
             android:enabled="true" />
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActionActivity"></activity>
+        <activity android:name=".BeforeBounce" />
+        <activity android:name=".AfterBounce"></activity>
     </application>
 
 </manifest>

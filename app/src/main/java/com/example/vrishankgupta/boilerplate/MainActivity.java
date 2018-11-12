@@ -76,31 +76,25 @@ public class MainActivity extends AppCompatActivity {
                         a.scanForDevices();
                         Log.d("Conn", "onClick: "+a.getConnectionState());
                         Log.d("Devices", "onCreate: " + a.getDeviceList());
-
-
                     }
                 });
                 if(a.getDeviceName() != null )
                 {
                     tv.setText("Connected to " + a.getDeviceName() + " Ball");
-                    startActivity(new Intent(MainActivity.this,ActionActivity.class));
+                    startActivity(new Intent(MainActivity.this,BeforeBounce.class));
                     finish();
                 }
             }
         });
 
-        a.setOnBounceListener(new Ball.OnBounceListener() {
-        @Override
-        public void onBounce(int i, float v) {
-            Toast.makeText(a, a.getBatteryLevel()+"", Toast.LENGTH_LONG).show();
-            Log.d("Type", "onBounce: " + new Ball.BounceType() + " ");
-        }
 
-    });
-
-
-        Ball.BounceType y = new Ball.BounceType();
-
-
+//        a.setOnBounceListener(new Ball.OnBounceListener() {
+//        @Override
+//        public void onBounce(int i, float v) {
+//            Toast.makeText(a, Ball.ConnectionState.CONNECTED +"", Toast.LENGTH_LONG).show();
+//            Log.d("Type", "onBounce: " + new Ball.BounceType() + " ");
+//        }
+//
+//    });
     }
 }

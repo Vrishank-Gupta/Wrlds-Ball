@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
@@ -87,14 +88,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//        a.setOnBounceListener(new Ball.OnBounceListener() {
-//        @Override
-//        public void onBounce(int i, float v) {
-//            Toast.makeText(a, Ball.ConnectionState.CONNECTED +"", Toast.LENGTH_LONG).show();
-//            Log.d("Type", "onBounce: " + new Ball.BounceType() + " ");
-//        }
-//
-//    });
     }
 }

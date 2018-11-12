@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.wrlds.sdk.Ball;
 
@@ -24,6 +25,12 @@ public class BeforeBounce extends AppCompatActivity {
         Ball.BounceType type = new Ball.BounceType();
 
 
+        a.setOnShakeListener(new Ball.OnShakeListener() {
+            @Override
+            public void onShake(float v) {
+                Toast.makeText(a, "Shaken"  + v, Toast.LENGTH_SHORT).show();
+            }
+        });
         a.setOnBounceListener(new Ball.OnBounceListener() {
             @Override
             public void onBounce(int i, float v) {

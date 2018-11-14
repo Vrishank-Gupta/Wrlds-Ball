@@ -18,6 +18,7 @@ public class AfterBounce extends AppCompatActivity {
 
     TextView tv;
     EditText etName;
+    TextView hu;
     FancyButton fancyButton,counter,btnName;
     static public String name = "";
     @Override

@@ -3,6 +3,7 @@ package com.example.vrishankgupta.boilerplate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,9 +16,11 @@ import com.wrlds.sdk.Ball;
 
 public class BeforeBounce extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     static int count = 0;
+    EditText etName;
 
     Ball a;
     ImageView img;
+    static String name = "";
     public static final String API_KEY = "AIzaSyCE7i9MJ3YuDuqy9cn4YqgSf-qDESbgXh4";
     public static final String VIDEOID = "aA_mqSzbkM0";
 
@@ -26,7 +29,9 @@ public class BeforeBounce extends YouTubeBaseActivity implements YouTubePlayer.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_before);
         img = findViewById(R.id.img);
-        a=MainActivity.a;
+//        a=MainActivity.a;
+        etName = findViewById(R.id.etName);
+        etName.setText("");
         YouTubePlayerView youTubePlayerView = findViewById(R.id.ytPlayer);
         youTubePlayerView.initialize(API_KEY,this);
 
@@ -40,6 +45,13 @@ public class BeforeBounce extends YouTubeBaseActivity implements YouTubePlayer.O
         a.setOnBounceListener(new Ball.OnBounceListener() {
             @Override
             public void onBounce(int i, float v) {
+                if(etName.getText().toString().equals(""))
+                {
+                    etName.setError("Please enter name");
+                    Toast.makeText(a, "Please Enter Your Name to proceed", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    name = etName.getText().toString();
                 Log.d("BounceType", Ball.BounceType.HARD + "");
                 String str = String.valueOf(v);
                 if(v > 10)
@@ -47,7 +59,7 @@ public class BeforeBounce extends YouTubeBaseActivity implements YouTubePlayer.O
                     count++;
                     startActivity(new Intent(BeforeBounce.this,AfterBounce.class).putExtra("force",str).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     finish();
-                }
+                } }
             }
         });
 

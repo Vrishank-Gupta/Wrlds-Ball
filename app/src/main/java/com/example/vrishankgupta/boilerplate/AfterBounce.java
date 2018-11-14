@@ -23,7 +23,7 @@ public class AfterBounce extends AppCompatActivity {
         setContentView(R.layout.activity_after_bounce);
         tv = findViewById(R.id.forceValue);
         counter = findViewById(R.id.counter);
-        counter.setText("No. of bounces:- " + BeforeBounce.count);
+        counter.setText("No. of bounces by "+BeforeBounce.name+":- " + BeforeBounce.count);
         counter.setRadius(55);
         counter.setTextSize(30);
         fancyButton = findViewById(R.id.fancy);

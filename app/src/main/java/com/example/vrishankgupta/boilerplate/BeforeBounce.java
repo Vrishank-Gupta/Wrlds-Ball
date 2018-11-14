@@ -3,6 +3,7 @@ package com.example.vrishankgupta.boilerplate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,9 +16,11 @@ import com.wrlds.sdk.Ball;
 
 public class BeforeBounce extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     static int count = 0;
+    EditText etName;
 
     Ball a;
     ImageView img;
+    static String name = "";
     public static final String API_KEY = "AIzaSyCE7i9MJ3YuDuqy9cn4YqgSf-qDESbgXh4";
     public static final String VIDEOID = "aA_mqSzbkM0";
 

@@ -7,6 +7,7 @@
     tools:context=".BeforeBounce">
     <RelativeLayout
         android:layout_width="match_parent"
+        android:padding="5dp"
         android:layout_height="match_parent">
 
     <TextView
@@ -18,14 +19,30 @@
         android:textColor="@android:color/black"
         android:textStyle="bold"
         android:id="@+id/txtAbove"
-        android:text="Congratulations! The connection between the ball and the device has been successfully established. Please drop the ball and detect the bounce on an even surface."/>
+        android:text="Congratulations! The connection between the ball and the device has been successfully established.\n Please Enter your name to start and drop the ball to detect the bounce on an even surface."/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/txtAbove"
+        android:id="@+id/name"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/etName"
+            android:inputType="text"
+            android:hint="Enter Your Name"
+            android:padding="5dp"/>
+    </android.support.design.widget.TextInputLayout>
+
+
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:id="@+id/img"
-        android:layout_below="@id/txtAbove"
+        android:layout_below="@id/name"
         android:src="@drawable/before"/>
 
     <TextView
@@ -41,6 +58,7 @@
 
         <com.google.android.youtube.player.YouTubePlayerView
             android:layout_width="match_parent"
+            android:padding="10dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtbelow"
             android:id="@+id/ytPlayer"

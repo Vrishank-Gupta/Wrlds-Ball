@@ -8,6 +8,7 @@
     tools:context=".BeforeBounce">
     <RelativeLayout
         android:layout_width="match_parent"
+        android:padding="5dp"
         android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
@@ -20,12 +21,49 @@
         android:id="@+id/txtAbove"
         android:text="Wish to share the different physical notations in the free body diagram:-\n1. m:- Mass of the ball.\n2. g:- Acceleration due to gravity"/>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtAbove"
+        android:id="@+id/name">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="10"
+            android:layout_height="match_parent">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:inputType="text"
+            android:hint="Enter Your Name"
+            android:id="@+id/etName"
+            />
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fancy:fb_borderColor="#FFFFFF"
+            android:layout_weight="1"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:layout_marginStart="5dp"
+            android:id="@+id/btnName"
+            fancy:fb_borderWidth="1dp"
+            fancy:fb_defaultColor="#7ab800"
+            fancy:fb_focusColor="#9bd823"
+            fancy:fb_iconPosition="left"
+            fancy:fb_radius="30dp"/>
+        </LinearLayout>
+
+    </android.support.design.widget.TextInputLayout>
+
         <mehdi.sakout.fancybuttons.FancyButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_centerInParent="true"
-            android:layout_below="@id/txtAbove"
+            android:layout_below="@id/name"
             android:id="@+id/counter"
             android:paddingBottom="10dp"
             android:paddingLeft="20dp"

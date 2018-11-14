@@ -29,7 +29,7 @@ public class BeforeBounce extends YouTubeBaseActivity implements YouTubePlayer.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_before);
         img = findViewById(R.id.img);
-//        a=MainActivity.a;
+        a=MainActivity.a;
         etName = findViewById(R.id.etName);
         etName.setText("");
         YouTubePlayerView youTubePlayerView = findViewById(R.id.ytPlayer);

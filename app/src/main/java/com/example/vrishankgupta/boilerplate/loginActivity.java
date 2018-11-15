@@ -1,5 +1,6 @@
 package com.example.vrishankgupta.boilerplate;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.vrishankgupta.boilerplate.util.DatabaseHelper;
+import com.example.vrishankgupta.boilerplate.util.User;
 
 public class loginActivity extends AppCompatActivity {
 
@@ -43,6 +47,10 @@ public class loginActivity extends AppCompatActivity {
                     {
                         cursor.moveToNext();
                         Toast.makeText(loginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+//                        MainActivity.user =
+                        startActivity(new Intent(loginActivity.this,AfterBounce.class));
+                        finish();
                     }
                     else
                         Toast.makeText(loginActivity.this, "Error", Toast.LENGTH_SHORT).show();

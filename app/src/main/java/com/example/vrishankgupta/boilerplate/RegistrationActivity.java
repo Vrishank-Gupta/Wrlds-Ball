@@ -11,12 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.vrishankgupta.boilerplate.util.DatabaseHelper;
+import com.example.vrishankgupta.boilerplate.util.User;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     SQLiteOpenHelper openHelper;
     SQLiteDatabase db;
 
     Button login,btnReg;
+    long id;
     EditText etFname,etLname,etPassword,etEmail,etPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 String phone = etPhone.getText().toString();
                 insertData(fName,lname,password,email,phone);
                 Toast.makeText(RegistrationActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+
+                 MainActivity.user = new User(fName,lname,password,phone,email,id);
+                 startActivity(new Intent(RegistrationActivity.this,AfterBounce.class));
+                 finish();
+
             }
         });
     }
@@ -63,6 +72,6 @@ public class RegistrationActivity extends AppCompatActivity {
         contentValues.put(DatabaseHelper.COL_5,email);
         contentValues.put(DatabaseHelper.COL_6,phone);
 
-        long id = db.insert(DatabaseHelper.TABLE_NAME,null,contentValues);
+        id = db.insert(DatabaseHelper.TABLE_NAME,null,contentValues);
     }
 }

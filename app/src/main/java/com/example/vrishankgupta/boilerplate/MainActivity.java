@@ -12,12 +12,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.vrishankgupta.boilerplate.util.User;
 import com.wrlds.sdk.Ball;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    static User user;
    static Ball a;
     TextView tv;
     FancyButton scan;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+        user = null;
 
         ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 if(a.getDeviceName() != null )
                 {
                     tv.setText("Connected to " + a.getDeviceName() + " Ball");
-                    startActivity(new Intent(MainActivity.this,BeforeBounce.class));
+                    startActivity(new Intent(MainActivity.this,BeforeBounce.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     finish();
                 }
             }

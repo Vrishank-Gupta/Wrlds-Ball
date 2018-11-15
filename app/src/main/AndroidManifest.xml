@@ -29,19 +29,17 @@
             android:enabled="true" />
 
         <activity android:name=".MainActivity" />
-        <activity android:name=".Splash">
-
-        </activity>
-        <activity android:name=".BeforeBounce" >
-
-        </activity>
-        <activity android:name=".AfterBounce">
+        <activity android:name=".Splash"></activity>
+        <activity android:name=".BeforeBounce" />
+        <activity android:name=".AfterBounce" />
+        <activity android:name=".RegistrationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".loginActivity"></activity>
     </application>
 
 </manifest>

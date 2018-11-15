@@ -38,10 +38,11 @@
         </activity>
         <activity android:name=".BeforeBounce" />
         <activity android:name=".AfterBounce" />
-        <activity android:name=".RegistrationActivity">
+        <activity android:name=".RegistrationActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".HelpActivity">
 
         </activity>
-        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

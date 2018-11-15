@@ -1,71 +1,60 @@
 package com.example.vrishankgupta.boilerplate;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
-import com.wrlds.sdk.Ball;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 
-
-public class BeforeBounce extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
-    static int count = 0;
-
-    Ball a;
-    ImageView img;
-    FancyButton helpButton;
+public class HelpActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
+    FancyButton btnfree,btnbounce;
     public static final String API_KEY = "AIzaSyCE7i9MJ3YuDuqy9cn4YqgSf-qDESbgXh4";
-    public static final String VIDEOID = "aA_mqSzbkM0";
+    public static final String VIDEOID2 = "1WOrgrIcQZU";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_before);
-        img = findViewById(R.id.img);
-        a=MainActivity.a;
-        YouTubePlayerView youTubePlayerView = findViewById(R.id.ytPlayer);
-        youTubePlayerView.initialize(API_KEY,this);
+        setContentView(R.layout.activity_help);
+        btnbounce = findViewById(R.id.wikiBounce);
+        btnfree = findViewById(R.id.wikiFreefall);
+        btnbounce.setText("Mechanics of Bouncing Ball");
+        btnbounce.setTextSize(20);
+        btnbounce.setRadius(50);
 
-        helpButton = findViewById(R.id.help);
-        helpButton.setText("More");
-        helpButton.setRadius(55);
-        helpButton.setTextSize(30);
+        btnfree.setRadius(50);
+        btnfree.setText("Free Fall");
+        btnfree.setTextSize(20);
 
-        helpButton.setOnClickListener(new View.OnClickListener() {
+        btnfree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(BeforeBounce.this,HelpActivity.class));
+                String url = "https://en.wikipedia.org/wiki/Free_fall";
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             }
         });
 
-        a.setOnShakeListener(new Ball.OnShakeListener() {
+        btnbounce.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onShake(float v) {
-                Toast.makeText(a, "Shaken"  + v, Toast.LENGTH_SHORT).show();
-            }
-        });
-        a.setOnBounceListener(new Ball.OnBounceListener() {
-            @Override
-            public void onBounce(int i, float v) {
-                Log.d("BounceType", Ball.BounceType.HARD + "");
-                String str = String.valueOf(v);
-                if(v > 10)
-                {
-                    count++;
-                    startActivity(new Intent(BeforeBounce.this,AfterBounce.class).putExtra("force",str).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                    finish();
-                }
+            public void onClick(View v) {
+                String url = "https://en.wikipedia.org/wiki/Bouncing_ball";
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             }
         });
 
+        YouTubePlayerView youTubePlayerView2 = findViewById(R.id.ytPlayer2);
+        youTubePlayerView2.initialize(API_KEY,this);
     }
 
     @Override
@@ -75,7 +64,7 @@ public class BeforeBounce extends YouTubeBaseActivity implements YouTubePlayer.O
 
         if(!b)
         {
-            youTubePlayer.cueVideo(VIDEOID);
+            youTubePlayer.cueVideo(VIDEOID2);
         }
 
     }
@@ -84,6 +73,7 @@ public class BeforeBounce extends YouTubeBaseActivity implements YouTubePlayer.O
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 
     }
+
 
     private YouTubePlayer.PlayerStateChangeListener playerStateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
         @Override

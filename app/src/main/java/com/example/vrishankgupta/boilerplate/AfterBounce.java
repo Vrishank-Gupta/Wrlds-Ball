@@ -20,7 +20,7 @@ import mehdi.sakout.fancybuttons.FancyButton;
 
 public class AfterBounce extends AppCompatActivity {
 
-    TextView tv;
+    TextView tv,userName;
     FancyButton fancyButton,counter;
     static public String name = "";
 
@@ -30,12 +30,12 @@ public class AfterBounce extends AppCompatActivity {
         setContentView(R.layout.activity_after_bounce);
         tv = findViewById(R.id.forceValue);
         counter = findViewById(R.id.counter);
-        if(MainActivity.user!=null) {
-            counter.setText("No. of bounces by "+ MainActivity.user.getFname()+" :- " + BeforeBounce.count);
+        counter.setText("No. of bounces:- " + BeforeBounce.count);
+        userName = findViewById(R.id.username);
+        if(MainActivity.user!=null)
+        {
+            userName.setText(userName.getText() + " " + MainActivity.user.getFname());
         }
-        else
-            counter.setText("No. of bounces:- " + BeforeBounce.count);
-
         counter.setRadius(55);
         counter.setTextSize(25);
         fancyButton = findViewById(R.id.fancy);
@@ -53,11 +53,7 @@ public class AfterBounce extends AppCompatActivity {
                     BeforeBounce.count++;
                     float number = v;
                     String numberAsString = String.format ("%,.3f", number);
-                    if(MainActivity.user!=null) {
-                        counter.setText("No. of bounces by "+ MainActivity.user.getFname()+" :- " + BeforeBounce.count);
-                    }
-                    else
-                        counter.setText("No. of bounces:- " + BeforeBounce.count);
+                    counter.setText("No. of bounces:- " + BeforeBounce.count);
 
                     tv.setText("Normal Force:- "+numberAsString+"N");
 

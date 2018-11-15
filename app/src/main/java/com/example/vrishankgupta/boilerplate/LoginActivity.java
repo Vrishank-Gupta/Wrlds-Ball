@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 import com.example.vrishankgupta.boilerplate.util.DatabaseHelper;
 import com.example.vrishankgupta.boilerplate.util.User;
 
-public class loginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
     SQLiteOpenHelper openHelper;
@@ -30,6 +31,7 @@ public class loginActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etemail);
         etPassword = findViewById(R.id.etpassword);
         btnLogin = findViewById(R.id.btnLogin);
+        MainActivity.a.setOnBounceListener(null);
         db = openHelper.getReadableDatabase();
 
 
@@ -46,14 +48,19 @@ public class loginActivity extends AppCompatActivity {
                     if(cursor.getCount() > 0)
                     {
                         cursor.moveToNext();
-                        Toast.makeText(loginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-
-//                        MainActivity.user =
-                        startActivity(new Intent(loginActivity.this,AfterBounce.class));
+                        Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        Log.d("cursor", "onClick: "+ cursor.getString(1));
+                        String fname,lname,phone;
+                        long id = 1;
+                        fname = cursor.getString(1);
+                        lname = cursor.getColumnName(2);
+                        phone = cursor.getString(5);
+                        MainActivity.user = new User(fname,lname,password,phone,email,id);
+                        startActivity(new Intent(LoginActivity.this,AfterBounce.class));
                         finish();
                     }
                     else
-                        Toast.makeText(loginActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
 
                 }
             }

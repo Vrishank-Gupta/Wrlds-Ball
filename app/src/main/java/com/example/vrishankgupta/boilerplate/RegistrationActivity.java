@@ -34,11 +34,12 @@ public class RegistrationActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etpassword);
         etPhone = findViewById(R.id.etphone);
         login = findViewById(R.id.login);
+        MainActivity.a.setOnBounceListener(null);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegistrationActivity.this,loginActivity.class));
+                startActivity(new Intent(RegistrationActivity.this,LoginActivity.class));
                 finish();
             }
         });

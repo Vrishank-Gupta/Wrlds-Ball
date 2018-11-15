@@ -21,7 +21,6 @@ import mehdi.sakout.fancybuttons.FancyButton;
 public class AfterBounce extends AppCompatActivity {
 
     TextView tv;
-    Ball a;
     FancyButton fancyButton,counter;
     static public String name = "";
 
@@ -30,7 +29,6 @@ public class AfterBounce extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_after_bounce);
         tv = findViewById(R.id.forceValue);
-        a = MainActivity.a;
         counter = findViewById(R.id.counter);
         if(MainActivity.user!=null) {
             counter.setText("No. of bounces by "+ MainActivity.user.getFname()+" :- " + BeforeBounce.count);
@@ -46,33 +44,8 @@ public class AfterBounce extends AppCompatActivity {
         fancyButton.setTextSize(30);
         Intent intent = getIntent();
         String force = intent.getStringExtra("force");
-//        if(BeforeBounce.count >=5)
-//        {
-//            AlertDialog.Builder builder;
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
-//            } else {
-//                builder = new AlertDialog.Builder(this);
-//            }
-//            builder.setTitle("Login")
-//                    .setMessage("You Need to login to continue playing! Login Now?")
-//                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            // continue with delete
-//                            startActivity(new Intent(AfterBounce.this,RegistrationActivity.class));
-//
-//                        }
-//                    })
-//                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            // do nothing
-//                        }
-//                    })
-//                    .setIcon(android.R.drawable.ic_dialog_alert)
-//                    .show();
-//        }
 
-        a.setOnBounceListener(new Ball.OnBounceListener() {
+        MainActivity.a.setOnBounceListener(new Ball.OnBounceListener() {
             @Override
             public void onBounce(int i, float v) {
                 if(v > 10)
@@ -90,8 +63,9 @@ public class AfterBounce extends AppCompatActivity {
 
                     if(BeforeBounce.count >=5 && MainActivity.user == null)
                     {
-                        Toast.makeText(a, "You need to Login To continue!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AfterBounce.this, "Login To Continue", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(AfterBounce.this,RegistrationActivity.class));
+                        finish();
                     }
                 }
             }
